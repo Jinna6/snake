@@ -21,6 +21,7 @@ title.place(relx = 0.5, rely=0.15, anchor="center")
 
 ID = "none"
 SCORE = 0
+gameOverPic = PhotoImage(file="Gameover.png")
 
 def homePage():
 	global b1, b2, b3, b4
@@ -132,10 +133,10 @@ def overlapping(a, b):
 	return False
 
 def moveSnake():	
+	global gameOverPic
 
 	positions = []
 	positions.append(canvas.coords(snake[0]))
-	# print(positions)
 
 	#to set so that the snake can appear from the other side when it hits the border of the window
 	if positions[0][0] < 0:
@@ -176,6 +177,7 @@ def moveSnake():
 			canvas.create_image(width/2,height/2 - 50, image=gameOverPic, anchor="c")
 			canvas.update()
 			writeLb(ID, SCORE)
+			return
 	    
 	if "gameOver" not in locals():
 		if status == "run":
@@ -262,6 +264,7 @@ def homeButton():
 	b4.place(relx = 0.5, rely=0.6, anchor="center")
 	canvas = Canvas(root, bg="black", width=width, height=height)
 
+#the oppsite direction is banned when moving towards to one diretion.
 def leftKey(event):
 	global direction
 	if direction != "right":
@@ -287,7 +290,7 @@ def Unpause(event):
 	moveSnake()
 def mini(event):
 	root.iconify()
-def cheatFun(event):
+def cheatMethod(event):
 	global cheat
 	cheat = "yes"
 
@@ -297,8 +300,6 @@ SCORE = 0
 
 snake = []
 snakeSize = 15
-#snake head
-# snake.append(canvas.create_rectangle(snakeSize, snakeSize, snakeSize * 2, snakeSize * 2, fill="#33CC66"))
 
 direction = "right"
 status = "run"
@@ -311,7 +312,7 @@ root.bind("<Down>", downKey)
 root.bind("<p>",Pause)  #to pause the game
 root.bind("<s>",Unpause)  #to continue the game
 root.bind("<q>",mini)  #boss key
-root.bind("<x>",cheatFun)  #cheat code
+root.bind("<x>",cheatMethod)  #cheat code
 
 #to write a text file that contains the userID and the score
 lbRecord = open("record.txt", "r").read()
