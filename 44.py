@@ -140,6 +140,9 @@ def moveSnake():
 	positions = []
 	positions.append(canvas.coords(snake[0]))
 
+	if len(positions[0]) == 0:
+		return
+
 	#to set so that the snake can appear from the other side when it hits the border of the window
 	if positions[0][0] < 0:
 		canvas.coords(snake[0],width,positions[0][1],width-snakeSize,positions[0][3])
