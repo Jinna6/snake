@@ -287,7 +287,7 @@ def Unpause(event):
 	moveSnake()
 def mini(event):
 	root.iconify()
-def cheat(event):
+def cheatFun(event):
 	global cheat
 	cheat = "yes"
 
@@ -311,7 +311,7 @@ root.bind("<Down>", downKey)
 root.bind("<p>",Pause)  #to pause the game
 root.bind("<s>",Unpause)  #to continue the game
 root.bind("<q>",mini)  #boss key
-root.bind("<x>",cheat)  #cheat code
+root.bind("<x>",cheatFun)  #cheat code
 
 #to write a text file that contains the userID and the score
 lbRecord = open("record.txt", "r").read()
