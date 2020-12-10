@@ -337,6 +337,9 @@ for i in range(0, len(lbRecord)):
 
 global dic
 dic = dict(map(lambda x,y:[x,int(y)],name_list,score_list))
+for i in range(len(name_list)):
+	if dic[name_list[i]] < int(score_list[i]):
+		dic[name_list[i]] = int(score_list[i])
 
 Nickname()
 # homePage()
