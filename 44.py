@@ -93,6 +93,8 @@ def gamePage():
 	scoreText = canvas.create_text(width/2, buttonHeight * 3, fill="#9966FF", font="Arial 20 italic bold", text=txt)
 	placeFood()
 	placeBox()
+	global snake
+	snake.clear()
 	snake.append(canvas.create_rectangle(snakeSize, int(buttonHeight * 5) + 1, snakeSize * 2, int(buttonHeight * 5) + 1 + snakeSize, fill="#33CC66"))
 	moveSnake()
 
